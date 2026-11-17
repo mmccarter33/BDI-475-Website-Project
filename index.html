@@ -1,31 +1,56 @@
 <!DOCTYPE html>
-<!-- A placeholder from the Home Sales template. Replace this file with your site's first page. -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Under construction</title>
-  <!-- An empty icon, so the browser doesn't log an error looking for favicon.ico -->
+  <title>Mean home sale prices by city</title>
   <link rel="icon" href="data:,">
   <style>
-    :root { color-scheme: light dark; }
-    body {
-      max-width: 40rem;
-      margin: 0 auto;
-      padding: 3rem 1rem;
-      font-family: system-ui, sans-serif;
-      line-height: 1.5;
-    }
-    footer { margin-top: 3rem; font-size: 0.875rem; opacity: 0.75; }
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #202a35; background: #f5f7fa; }
+    body { max-width: 52rem; margin: 0 auto; padding: 3rem 1.25rem; line-height: 1.55; }
+    h1 { margin-bottom: .5rem; font-size: clamp(1.8rem, 5vw, 2.5rem); }
+    .intro { color: #526171; margin-top: 0; }
+    .table-wrap { overflow-x: auto; background: white; border: 1px solid #dce3ea; border-radius: .75rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: .75rem 1rem; text-align: left; border-bottom: 1px solid #e7ecf1; }
+    th { background: #edf2f7; font-size: .9rem; }
+    td:last-child, th:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+    tbody tr:last-child td { border-bottom: 0; }
+    footer { margin-top: 2rem; color: #526171; font-size: .875rem; }
   </style>
 </head>
 <body>
   <main>
-    <h1>This site is under construction</h1>
-    <p>It will show findings from the College-town home sales dataset.</p>
+    <h1>Mean home sale price by city</h1>
+    <p class="intro">Average sale price in each city, rounded to the nearest dollar. Prices below $1,000 are excluded to reduce the effect of the impossible values described in the data notes.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">City</th><th scope="col">State</th><th scope="col">Mean sale price</th></tr></thead>
+        <tbody>
+          <tr><td>Ann Arbor</td><td>MI</td><td>$657,210</td></tr>
+          <tr><td>Athens</td><td>GA</td><td>$491,552</td></tr>
+          <tr><td>Carrboro</td><td>NC</td><td>$612,495</td></tr>
+          <tr><td>Champaign</td><td>IL</td><td>$277,276</td></tr>
+          <tr><td>Chapel Hill</td><td>NC</td><td>$837,117</td></tr>
+          <tr><td>Charlottesville</td><td>VA</td><td>$795,448</td></tr>
+          <tr><td>Davis</td><td>CA</td><td>$976,896</td></tr>
+          <tr><td>Gainesville</td><td>FL</td><td>$403,359</td></tr>
+          <tr><td>Iowa City</td><td>IA</td><td>$389,734</td></tr>
+          <tr><td>Lafayette</td><td>IN</td><td>$282,797</td></tr>
+          <tr><td>Madison</td><td>WI</td><td>$477,144</td></tr>
+          <tr><td>Middleton</td><td>WI</td><td>$709,295</td></tr>
+          <tr><td>Newberry</td><td>FL</td><td>$497,060</td></tr>
+          <tr><td>Pittsboro</td><td>NC</td><td>$954,457</td></tr>
+          <tr><td>Savoy</td><td>IL</td><td>$420,053</td></tr>
+          <tr><td>State College</td><td>PA</td><td>$473,855</td></tr>
+          <tr><td>Urbana</td><td>IL</td><td>$246,549</td></tr>
+          <tr><td>West Lafayette</td><td>IN</td><td>$416,652</td></tr>
+        </tbody>
+      </table>
+    </div>
   </main>
   <footer>
-    <p>Data: College-town home sales dataset, version 1.0 (2026). University of Illinois-Deloitte Foundation Center for Business Emerging Technologies. Data collected March 2026.</p>
+    <p>Source: College-town home sales dataset, version 1.0 (2026). Means are calculated from individual sales with sale_price of at least $1,000; city names are paired with state to distinguish cities with the same name.</p>
   </footer>
 </body>
 </html>
