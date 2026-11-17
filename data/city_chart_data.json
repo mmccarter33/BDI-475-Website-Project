@@ -1,0 +1,226 @@
+{
+  "sale_price_rule": "sale_price >= 1000",
+  "days_on_market_rule": "contract_date - list_date when both dates are present",
+  "overall_median_sale_price": 410000,
+  "overall_average_days_on_market": 33.95,
+  "price_cities": [
+    {
+      "city": "Davis",
+      "state": "CA",
+      "value": 889000,
+      "sales": 941
+    },
+    {
+      "city": "Pittsboro",
+      "state": "NC",
+      "value": 876986,
+      "sales": 92
+    },
+    {
+      "city": "Chapel Hill",
+      "state": "NC",
+      "value": 735000,
+      "sales": 2716
+    },
+    {
+      "city": "Charlottesville",
+      "state": "VA",
+      "value": 615000,
+      "sales": 2774
+    },
+    {
+      "city": "Middleton",
+      "state": "WI",
+      "value": 611000,
+      "sales": 645
+    },
+    {
+      "city": "Carrboro",
+      "state": "NC",
+      "value": 601250,
+      "sales": 208
+    },
+    {
+      "city": "Ann Arbor",
+      "state": "MI",
+      "value": 571000,
+      "sales": 3020
+    },
+    {
+      "city": "Newberry",
+      "state": "FL",
+      "value": 439995,
+      "sales": 152
+    },
+    {
+      "city": "State College",
+      "state": "PA",
+      "value": 430000,
+      "sales": 1350
+    },
+    {
+      "city": "Madison",
+      "state": "WI",
+      "value": 421000,
+      "sales": 5061
+    },
+    {
+      "city": "Savoy",
+      "state": "IL",
+      "value": 402700,
+      "sales": 247
+    },
+    {
+      "city": "West Lafayette",
+      "state": "IN",
+      "value": 379900,
+      "sales": 1559
+    },
+    {
+      "city": "Athens",
+      "state": "GA",
+      "value": 370000,
+      "sales": 2813
+    },
+    {
+      "city": "Gainesville",
+      "state": "FL",
+      "value": 350000,
+      "sales": 5477
+    },
+    {
+      "city": "Iowa City",
+      "state": "IA",
+      "value": 342000,
+      "sales": 1909
+    },
+    {
+      "city": "Lafayette",
+      "state": "IN",
+      "value": 260000,
+      "sales": 3057
+    },
+    {
+      "city": "Champaign",
+      "state": "IL",
+      "value": 240000,
+      "sales": 2286
+    },
+    {
+      "city": "Urbana",
+      "state": "IL",
+      "value": 229900,
+      "sales": 1131
+    }
+  ],
+  "days_cities": [
+    {
+      "city": "Newberry",
+      "state": "FL",
+      "value": 90.1,
+      "sales": 133
+    },
+    {
+      "city": "Pittsboro",
+      "state": "NC",
+      "value": 56.81,
+      "sales": 57
+    },
+    {
+      "city": "Athens",
+      "state": "GA",
+      "value": 52.08,
+      "sales": 2279
+    },
+    {
+      "city": "Gainesville",
+      "state": "FL",
+      "value": 51.67,
+      "sales": 4372
+    },
+    {
+      "city": "Iowa City",
+      "state": "IA",
+      "value": 41.56,
+      "sales": 1248
+    },
+    {
+      "city": "Middleton",
+      "state": "WI",
+      "value": 36.09,
+      "sales": 560
+    },
+    {
+      "city": "Chapel Hill",
+      "state": "NC",
+      "value": 34.57,
+      "sales": 2205
+    },
+    {
+      "city": "Savoy",
+      "state": "IL",
+      "value": 31.79,
+      "sales": 212
+    },
+    {
+      "city": "West Lafayette",
+      "state": "IN",
+      "value": 31.12,
+      "sales": 1293
+    },
+    {
+      "city": "Urbana",
+      "state": "IL",
+      "value": 30.66,
+      "sales": 872
+    },
+    {
+      "city": "Davis",
+      "state": "CA",
+      "value": 29.47,
+      "sales": 792
+    },
+    {
+      "city": "Charlottesville",
+      "state": "VA",
+      "value": 29.44,
+      "sales": 2056
+    },
+    {
+      "city": "State College",
+      "state": "PA",
+      "value": 29.34,
+      "sales": 908
+    },
+    {
+      "city": "Lafayette",
+      "state": "IN",
+      "value": 26.11,
+      "sales": 2604
+    },
+    {
+      "city": "Champaign",
+      "state": "IL",
+      "value": 25.8,
+      "sales": 1784
+    },
+    {
+      "city": "Ann Arbor",
+      "state": "MI",
+      "value": 25.39,
+      "sales": 2450
+    },
+    {
+      "city": "Carrboro",
+      "state": "NC",
+      "value": 24.36,
+      "sales": 149
+    },
+    {
+      "city": "Madison",
+      "state": "WI",
+      "value": 19.61,
+      "sales": 4068
+    }
+  ]
+}

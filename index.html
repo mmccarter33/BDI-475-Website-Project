@@ -3,54 +3,170 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mean home sale prices by city</title>
+  <title>Home sale prices and days on market by city</title>
   <link rel="icon" href="data:,">
   <style>
-    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #202a35; background: #f5f7fa; }
-    body { max-width: 52rem; margin: 0 auto; padding: 3rem 1.25rem; line-height: 1.55; }
-    h1 { margin-bottom: .5rem; font-size: clamp(1.8rem, 5vw, 2.5rem); }
-    .intro { color: #526171; margin-top: 0; }
-    .table-wrap { overflow-x: auto; background: white; border: 1px solid #dce3ea; border-radius: .75rem; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: .75rem 1rem; text-align: left; border-bottom: 1px solid #e7ecf1; }
-    th { background: #edf2f7; font-size: .9rem; }
-    td:last-child, th:last-child { text-align: right; font-variant-numeric: tabular-nums; }
-    tbody tr:last-child td { border-bottom: 0; }
-    footer { margin-top: 2rem; color: #526171; font-size: .875rem; }
+    :root {
+      color-scheme: light;
+      font-family: system-ui, sans-serif;
+      color: #202a35;
+      background: #f5f7fa;
+      font-synthesis: none;
+    }
+    * { box-sizing: border-box; }
+    body { max-width: 90rem; margin: 0 auto; padding: 2.5rem 1.25rem; line-height: 1.5; }
+    h1 { margin: 0 0 .5rem; font-size: clamp(1.9rem, 4vw, 2.6rem); }
+    .intro { max-width: 68rem; margin: 0 0 1.5rem; color: #526171; }
+    .charts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; align-items: start; }
+    .chart-card { min-width: 0; padding: 1.1rem; background: white; border: 1px solid #dce3ea; border-radius: .75rem; box-shadow: 0 2px 8px #1a2a3a0b; }
+    .chart-card h2 { margin: 0; font-size: 1.2rem; }
+    .overall { margin: .25rem 0 .9rem; color: #394b5d; font-size: .9rem; font-weight: 650; }
+    .legend { display: flex; gap: .45rem; align-items: center; color: #526171; font-size: .78rem; }
+    .legend-line { width: 1.4rem; height: 0; border-top: 2px dashed #b45309; }
+    .scale-note { margin: .55rem 0 .35rem; color: #647386; font-size: .72rem; }
+    .bars { margin: 0; padding: 0; list-style: none; }
+    .bar-row { display: grid; grid-template-columns: minmax(8rem, 8.6rem) minmax(3rem, 1fr) auto; align-items: center; gap: .45rem; min-height: 1.65rem; }
+    .city { color: #334155; font-size: .76rem; line-height: 1.15; white-space: nowrap; }
+    .value { color: #263747; font-size: .72rem; font-variant-numeric: tabular-nums; font-weight: 650; text-align: right; white-space: nowrap; }
+    .track { position: relative; height: .62rem; border-radius: 999px; background: #edf2f7; }
+    .bar { display: block; height: 100%; min-width: 2px; border-radius: inherit; background: #3478a5; }
+    .days .bar { background: #57866f; }
+    .reference { position: absolute; z-index: 1; top: -.23rem; bottom: -.23rem; border-left: 2px dashed #b45309; pointer-events: none; }
+    .axis { display: flex; justify-content: space-between; margin: .35rem 0 0 9.05rem; color: #647386; font-size: .68rem; }
+    .error { padding: 1rem; background: #fff4f2; border: 1px solid #d94838; border-radius: .5rem; color: #7a251b; }
+    footer { margin-top: 1.4rem; color: #526171; font-size: .82rem; }
+    @media (max-width: 68rem) {
+      body { padding: 1.5rem 1rem; }
+      .charts { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: minmax(7.2rem, 10rem) minmax(4rem, 1fr) auto; }
+      .axis { margin-left: 10.55rem; }
+    }
+    @media (max-width: 28rem) {
+      .chart-card { padding: .8rem; }
+      .bar-row { grid-template-columns: 6.1rem minmax(2.4rem, 1fr) auto; gap: .3rem; }
+      .city { font-size: .68rem; white-space: normal; overflow-wrap: anywhere; }
+      .value { font-size: .67rem; }
+      .axis { margin-left: 6.4rem; }
+    }
   </style>
 </head>
 <body>
   <main>
-    <h1>Mean home sale price by city</h1>
-    <p class="intro">Average sale price in each city, rounded to the nearest dollar. Prices below $1,000 are excluded to reduce the effect of the impossible values described in the data notes.</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th scope="col">City</th><th scope="col">State</th><th scope="col">Mean sale price</th></tr></thead>
-        <tbody>
-          <tr><td>Ann Arbor</td><td>MI</td><td>$657,210</td></tr>
-          <tr><td>Athens</td><td>GA</td><td>$491,552</td></tr>
-          <tr><td>Carrboro</td><td>NC</td><td>$612,495</td></tr>
-          <tr><td>Champaign</td><td>IL</td><td>$277,276</td></tr>
-          <tr><td>Chapel Hill</td><td>NC</td><td>$837,117</td></tr>
-          <tr><td>Charlottesville</td><td>VA</td><td>$795,448</td></tr>
-          <tr><td>Davis</td><td>CA</td><td>$976,896</td></tr>
-          <tr><td>Gainesville</td><td>FL</td><td>$403,359</td></tr>
-          <tr><td>Iowa City</td><td>IA</td><td>$389,734</td></tr>
-          <tr><td>Lafayette</td><td>IN</td><td>$282,797</td></tr>
-          <tr><td>Madison</td><td>WI</td><td>$477,144</td></tr>
-          <tr><td>Middleton</td><td>WI</td><td>$709,295</td></tr>
-          <tr><td>Newberry</td><td>FL</td><td>$497,060</td></tr>
-          <tr><td>Pittsboro</td><td>NC</td><td>$954,457</td></tr>
-          <tr><td>Savoy</td><td>IL</td><td>$420,053</td></tr>
-          <tr><td>State College</td><td>PA</td><td>$473,855</td></tr>
-          <tr><td>Urbana</td><td>IL</td><td>$246,549</td></tr>
-          <tr><td>West Lafayette</td><td>IN</td><td>$416,652</td></tr>
-        </tbody>
-      </table>
+    <h1>Home sales by city</h1>
+    <p class="intro">Compare sale prices and days on market across the 18 cities in the dataset. Each chart is sorted from highest to lowest. The dashed line marks the overall figure for that measure.</p>
+    <div id="charts" class="charts" aria-live="polite">
+      <p>Loading city sales data…</p>
     </div>
   </main>
   <footer>
-    <p>Source: College-town home sales dataset, version 1.0 (2026). Means are calculated from individual sales with sale_price of at least $1,000; city names are paired with state to distinguish cities with the same name.</p>
+    <p>Sale price medians include sales of $1,000 or more, excluding the impossible low values noted in the data description. Days on market is contract date minus list date, calculated only for sales with both dates; blank dates are not treated as zero. Averages can be pulled up by long marketing periods, and listed sales are not a random sample of all sales.</p>
+    <p>Source: College-town home sales dataset, version 1.0 (2026), collected March 2026.</p>
   </footer>
+  <script>
+    const charts = document.querySelector("#charts");
+
+    function formatPrice(value) {
+      return "$" + new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(value);
+    }
+
+    function formatDays(value) {
+      return new Intl.NumberFormat("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
+    }
+
+    function addChart(entries, referenceValue, options) {
+      const maximum = Math.max(...entries.map((entry) => entry.value));
+      const referencePercent = Math.min(100, referenceValue / maximum * 100);
+      const section = document.createElement("section");
+      section.className = `chart-card ${options.className}`;
+      section.setAttribute("aria-labelledby", options.id);
+
+      const heading = document.createElement("h2");
+      heading.id = options.id;
+      heading.textContent = options.title;
+      section.append(heading);
+
+      const overall = document.createElement("p");
+      overall.className = "overall";
+      overall.textContent = `Overall ${options.referenceLabel}: ${options.format(referenceValue)}`;
+      section.append(overall);
+
+      const legend = document.createElement("div");
+      legend.className = "legend";
+      legend.innerHTML = '<span class="legend-line" aria-hidden="true"></span><span>Overall reference</span>';
+      section.append(legend);
+
+      const scaleNote = document.createElement("p");
+      scaleNote.className = "scale-note";
+      scaleNote.textContent = "Bars are scaled to the highest city value";
+      section.append(scaleNote);
+
+      const list = document.createElement("ol");
+      list.className = "bars";
+      list.setAttribute("aria-label", `${options.title}, highest to lowest`);
+      entries.forEach((entry) => {
+        const row = document.createElement("li");
+        row.className = "bar-row";
+
+        const city = document.createElement("span");
+        city.className = "city";
+        city.textContent = `${entry.city}, ${entry.state}`;
+
+        const track = document.createElement("span");
+        track.className = "track";
+        track.setAttribute("aria-hidden", "true");
+        const bar = document.createElement("span");
+        bar.className = "bar";
+        bar.style.width = `${entry.value / maximum * 100}%`;
+        const reference = document.createElement("span");
+        reference.className = "reference";
+        reference.style.left = `${referencePercent}%`;
+        track.append(bar, reference);
+
+        const value = document.createElement("span");
+        value.className = "value";
+        value.textContent = options.format(entry.value);
+
+        row.append(city, track, value);
+        list.append(row);
+      });
+      section.append(list);
+
+      const axis = document.createElement("div");
+      axis.className = "axis";
+      axis.setAttribute("aria-hidden", "true");
+      axis.innerHTML = `<span>0</span><span>${options.format(maximum)}</span>`;
+      section.append(axis);
+      charts.append(section);
+    }
+
+    fetch("data/city_chart_data.json")
+      .then((response) => {
+        if (!response.ok) throw new Error("City data could not be loaded.");
+        return response.json();
+      })
+      .then((data) => {
+        charts.replaceChildren();
+        addChart(data.price_cities, data.overall_median_sale_price, {
+          id: "price-title",
+          title: "Median sale price",
+          referenceLabel: "median sale price",
+          className: "prices",
+          format: formatPrice,
+        });
+        addChart(data.days_cities, data.overall_average_days_on_market, {
+          id: "days-title",
+          title: "Average days on market",
+          referenceLabel: "average days on market",
+          className: "days",
+          format: formatDays,
+        });
+      })
+      .catch(() => {
+        const message = document.createElement("p");
+        message.className = "error";
+        message.textContent = "City sales data could not be loaded. Please try again later.";
+        charts.replaceChildren(message);
+      });
+  </script>
 </body>
 </html>
